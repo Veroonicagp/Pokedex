@@ -41,7 +41,8 @@ class PokemonListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = PokemonListAdapter()
         val rv = binding.rvPokemon
-        //rv.adapter = adapter
+        rv.adapter = adapter
+        (rv.adapter as PokemonListAdapter).submitList(repository.readAll())
         viewLifecycleOwner.lifecycleScope.launch {
 
             repeatOnLifecycle(Lifecycle.State.STARTED) {
