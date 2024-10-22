@@ -1,4 +1,4 @@
-package com.example.pokedex
+package com.example.pokedex.ui
 
 
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(
+class PokemonViewModel @Inject constructor(
     private val repository:PokemonReepository
 ):ViewModel() {
     suspend fun read(): PokemonListResponse {

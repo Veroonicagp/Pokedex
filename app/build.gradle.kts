@@ -41,10 +41,11 @@ android {
 }
 
 dependencies {
-
+    implementation("androidx.fragment:fragment-ktx:1.8.4")
     implementation (libs.converter.gson)
     implementation(libs.retrofit)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.navigation.fragment)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
