@@ -10,6 +10,7 @@ class DefaultPokemonRepository
     @Inject constructor(
         private val remotedataSource: PokemonRemoteDataSource
     ):PokemonReepository {
+
     override suspend fun readAll(): PokemonListResponse {
         val pokemons = remotedataSource.readAll()
         return pokemons

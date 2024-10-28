@@ -21,9 +21,8 @@ import javax.inject.Inject
 class PokemonListFragment : Fragment() {
     //no olvidar importar fragment en gradel
     private val viewModel: PokemonViewModel by viewModels()
-    @Inject
-    lateinit var repository: PokemonReepository
     private lateinit var binding: FragmentPokemonListBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,10 +38,18 @@ class PokemonListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        lifecycleScope.launch{
+            val rv = binding.rvPokemon
+            rv.adapter = adapter
+
+            viewModel.ui
+
+        }
+        }
         val adapter = PokemonListAdapter()
-        val rv = binding.rvPokemon
-        rv.adapter = adapter
-        (rv.adapter as PokemonListAdapter).submitList(repository.readAll())
+
+
+        (rv.adapter as PokemonListAdapter).submitList(uiS)
         viewLifecycleOwner.lifecycleScope.launch {
 
             repeatOnLifecycle(Lifecycle.State.STARTED) {
